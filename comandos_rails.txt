@@ -8,3 +8,13 @@ rails server ou s
 
 #gera um controller
 rails g controller Produtos
+
+#cria banco de dados
+rails db:create
+
+#cria um model
+rails g model Produto nome:string descricao:text preco:decimal quantidade:integer
+
+#faz migração
+rails db:migrate
+
