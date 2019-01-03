@@ -11,12 +11,10 @@
 </head>
 
 <body>
-<%= nav_bar brand: "Loja Schenato", brand_link: root_url do %>
-
+<%= nav_bar brand: "Loja", brand_link: root_url do %>
   <%= menu_group do %>
-    <%= menu_item "Criar Produto", produtos_new_path %>
+    <%= menu_item "Criar Produto", new_produto_path %>
   <% end %>
-
 <% end %>
   <div class="container">
 
