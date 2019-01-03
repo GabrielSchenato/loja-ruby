@@ -3,3 +3,8 @@ Comandos Rails
 #cria um novo projeto
 rails new loja
 
+#inicia server
+rails server ou s
+
+#gera um controller
+rails g controller Produtos
