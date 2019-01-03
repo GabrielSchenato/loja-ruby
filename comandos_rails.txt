@@ -26,3 +26,6 @@ bundle install
 
 #instala bootstrap
 rails generate bootstrap:install static
+
+#cria crud completo
+rails g scaffold Departamento nome
