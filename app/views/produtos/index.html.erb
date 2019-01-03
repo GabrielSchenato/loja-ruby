@@ -7,29 +7,40 @@
     <title>Loja</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<%= nav_bar brand: "Loja Schenato", brand_link: root_url %>
+<div class="container">
 
-<body>
-    <table>
-        <thead>
-            <tr>
-                <td>Nome</td>
-                <td>Descrição</td>
-                <td>Preço</td>
-                <td>Quantidade</td>
-            </tr>
-        </thead>
-        <tbody>
-            <% todos = Produto.all %>
-            <% todos.each do |produto| %>
-            <tr>
-                <td><%=  produto.nome %></td>
-                <td><%=  produto.descricao %></td>
-                <td><%=  produto.preco %></td>
-                <td><%=  produto.quantidade %></td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
-</body>
+    <body>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                    <td>Descrição</td>
+                    <td>Preço</td>
+                    <td>Quantidade</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% @produtos.each do |produto| %>
+                <tr>
+                    <td>
+                        <%=  produto.nome %>
+                    </td>
+                    <td>
+                        <%=  produto.descricao %>
+                    </td>
+                    <td>
+                        <%=  produto.preco %>
+                    </td>
+                    <td>
+                        <%=  produto.quantidade %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+
+    </body>
+</div>
 
 </html>

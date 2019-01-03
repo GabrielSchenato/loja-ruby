@@ -18,3 +18,11 @@ rails g model Produto nome:string descricao:text preco:decimal quantidade:intege
 #faz migração
 rails db:migrate
 
+#acessa o console db
+rails dbconsole
+
+#instala dependencias
+bundle install
+
+#instala bootstrap
+rails generate bootstrap:install static
