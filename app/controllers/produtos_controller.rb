@@ -9,6 +9,26 @@ class ProdutosController < ApplicationController
         @departamentos = Departamento.all
     end
 
+    def edit
+        id = params[:id]
+        @produto = Produto.find(id)
+        @departamentos = Departamento.all
+        render :new
+    end
+
+    def update
+        id = params[:id]
+        @produto = Produto.find(id)
+        @departamentos = Departamento.all
+        valores = params.require(:produto).permit(:nome, :descricao, :departamento_id, :preco, :quantidade)
+        if @produto.update valores
+            flash[:notice] = "Produto editado com sucesso!"
+            redirect_to root_path
+        else
+            render :new
+        end
+    end
+
     def create
         valores = params.require(:produto).permit(:nome, :descricao, :departamento_id, :preco, :quantidade)
         @produto = Produto.new valores
