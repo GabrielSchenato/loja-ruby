@@ -29,3 +29,6 @@ rails generate bootstrap:install static
 
 #cria crud completo
 rails g scaffold Departamento nome
+
+#cria migration para relacionameto
+rails g migration add_departamento_id_to_produto departamento_id:integer
