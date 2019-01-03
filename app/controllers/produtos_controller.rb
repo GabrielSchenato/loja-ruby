@@ -1,5 +1,7 @@
 class ProdutosController < ApplicationController
 
+    before_action :set_produto, only: [:edit, :update, :destroy]
+
     def index
         @produtos = Produto.order :nome
     end
@@ -10,18 +12,13 @@ class ProdutosController < ApplicationController
     end
 
     def edit
-        id = params[:id]
-        @produto = Produto.find(id)
         @departamentos = Departamento.all
         render :new
     end
 
     def update
-        id = params[:id]
-        @produto = Produto.find(id)
         @departamentos = Departamento.all
-        valores = params.require(:produto).permit(:nome, :descricao, :departamento_id, :preco, :quantidade)
-        if @produto.update valores
+        if @produto.update produto_params
             flash[:notice] = "Produto editado com sucesso!"
             redirect_to root_path
         else
@@ -30,8 +27,7 @@ class ProdutosController < ApplicationController
     end
 
     def create
-        valores = params.require(:produto).permit(:nome, :descricao, :departamento_id, :preco, :quantidade)
-        @produto = Produto.new valores
+        @produto = Produto.new produto_params
         @departamentos = Departamento.all
         if @produto.save
             flash[:notice] = "Produto salvo com sucesso!"
@@ -42,14 +38,22 @@ class ProdutosController < ApplicationController
     end
 
     def destroy
-        id = params[:id]
-        Produto.destroy id
+        @produto.destroy
         redirect_to root_url
     end
 
     def busca
         @nome = params[:nome]
         @produtos = Produto.where "nome like ?",  "%#{@nome}%"
+    end
+
+    private
+    def produto_params
+        params.require(:produto).permit(:nome, :descricao, :departamento_id, :preco, :quantidade)
+    end
+
+    def set_produto
+        @produto = Produto.find(params[:id])
     end
 
 end
